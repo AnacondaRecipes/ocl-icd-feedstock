@@ -53,8 +53,15 @@ about:
   home: https://github.com/OCL-dev/ocl-icd
   # https://forge.imag.fr/projects/ocl-icd/ also exists but appears out of date
   license: BSD-2-Clause
+  license_family: BSD
   license_file: COPYING
   summary: An OpenCL ICD Loader under an open-source license
+  doc_source_url: https://github.com/OCL-dev/ocl-icd/tree/v{{ version }}/doc
+  dev_url: https://github.com/OCL-dev/ocl-icd
+  description: |
+    `libOpenCL.so` is the library linked by OpenCL programs. It does not contains
+    any OpenCL implementation itself, but merely act as a dispatcher to real OpenCL
+    implementations provided as OpenCL Installable Client Driver (ICD).
 
 extra:
   recipe-maintainers:
