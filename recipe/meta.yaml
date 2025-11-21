@@ -15,7 +15,7 @@ source:
     - check_icds_recursively.diff
 
 build:
-  number: 1
+  number: 0
   skip: true  # [not linux]
   run_exports:
     - {{ pin_subpackage("ocl-icd") }}
@@ -31,7 +31,7 @@ requirements:
     - {{ stdlib('c') }}
     - ruby *
   host:
-    - opencl-headers
+    - opencl-headers =2025.07.22
   run:
     - {{ pin_compatible("opencl-headers", max_pin=None) }}
 
