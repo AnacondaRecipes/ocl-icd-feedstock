@@ -1,6 +1,6 @@
 {% set name = "ocl-icd" %}
-{% set version = "2.3.3" %}
-{% set sha256 = "8cd8e8e129db3081a64090fc1252bec39dc88cdb7b3f929315e014b75069bd9d" %}
+{% set version = "2.3.4" %}
+{% set sha256 = "1a302b71b7304cca5a36f69d017b1af2b762cc4c2dd1c0c0e2fc1933db25c9cc" %}
 
 package:
   name: {{ name|lower }}
@@ -31,7 +31,7 @@ requirements:
     - {{ stdlib('c') }}
     - ruby *
   host:
-    - opencl-headers =2025.07.22
+    - opencl-headers
   run:
     - {{ pin_compatible("opencl-headers", max_pin=None) }}
 
@@ -50,6 +50,18 @@ test:
     - ./test
     - ./test | grep "No platforms found!"
     - pkg-config OpenCL --libs --cflags
+
+outputs:
+  - name: ocl-icd
+
+  - name: libopencl-devel
+    version: 3.0.{{ version }}
+    build:
+      run_exports:
+        - {{ pin_subpackage("ocl-icd") }}
+    requirements:
+      run:
+        - ocl-icd
 
 about:
   home: https://github.com/OCL-dev/ocl-icd
