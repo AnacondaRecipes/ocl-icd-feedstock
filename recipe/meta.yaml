@@ -51,6 +51,18 @@ test:
     - ./test | grep "No platforms found!"
     - pkg-config OpenCL --libs --cflags
 
+outputs:
+  - name: ocl-icd
+
+  - name: libopencl-devel
+    version: 3.0.{{ version }}
+    build:
+      run_exports:
+        - {{ pin_subpackage("ocl-icd") }}
+    requirements:
+      run:
+        - ocl-icd
+
 about:
   home: https://github.com/OCL-dev/ocl-icd
   # https://forge.imag.fr/projects/ocl-icd/ also exists but appears out of date
