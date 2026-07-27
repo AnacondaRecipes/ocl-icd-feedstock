@@ -31,7 +31,7 @@ requirements:
     - {{ stdlib('c') }}
     - ruby *
   host:
-    - opencl-headers =2025.07.22
+    - opencl-headers
   run:
     - {{ pin_compatible("opencl-headers", max_pin=None) }}
 
